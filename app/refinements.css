@@ -1,0 +1,218 @@
+/* Calm surfaces and restrained motion, shared across the existing page structure. */
+:root {
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+body {
+  background: radial-gradient(ellipse at 90% 0%, #e2ece3 0, transparent 700px), var(--paper);
+}
+.page-intro {
+  position: relative;
+  isolation: isolate;
+}
+.page-intro::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: min(38vw, 440px);
+  aspect-ratio: 1;
+  right: 0;
+  top: 45px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    ellipse at center,
+    transparent 0 38px,
+    #6f977014 39px 40px,
+    transparent 41px 68px
+  );
+  mask-image: linear-gradient(110deg, transparent, black);
+}
+.page-intro h1 {
+  max-width: 960px;
+  text-wrap: balance;
+}
+.page-intro > p {
+  line-height: 1.8;
+}
+.hero-content h1,
+.hero-content > p {
+  translate: none;
+}
+.hero-content > p {
+  color: #e1e9e9;
+  line-height: 1.8;
+}
+.hero-depth-grid {
+  opacity: 0.06;
+}
+.hero h1 em {
+  color: #c8e8bb;
+}
+.hero-shade {
+  background:
+    linear-gradient(90deg, #03111acc, #03111a55 50%, #03111a05),
+    linear-gradient(0deg, #07171e, transparent 52%);
+}
+.button,
+.nav-cta,
+.menu-button {
+  border-radius: 8px;
+}
+.button::before,
+.nav-cta::before {
+  border-radius: inherit;
+}
+.button.primary {
+  box-shadow:
+    inset 0 1px 0 #ffffff30,
+    0 5px 16px #061d1b12;
+}
+.button:active:not(:disabled),
+.nav-cta:active,
+.menu-button:active {
+  scale: 0.995;
+}
+.site-header {
+  box-shadow: 0 1px 0 #ffffff08;
+}
+.dark {
+  background: radial-gradient(ellipse at 80% 0%, #183b40 0, transparent 65%), var(--navy);
+}
+.focus-section {
+  background: radial-gradient(ellipse at 20% 50%, #1b3c40, #102a33 70%);
+}
+.dashboard {
+  border-radius: 16px;
+  overflow: hidden;
+  border-color: #57746d70;
+  box-shadow: 0 24px 60px #00000020;
+}
+.layer,
+.use-case-panel {
+  border-radius: 10px;
+}
+.audience-grid > a {
+  background: linear-gradient(140deg, #fff, #edf2e9);
+  border-radius: 16px;
+  border-color: #d5dfd3;
+  box-shadow: 0 8px 24px #18352b05;
+}
+.problem-item,
+.why-grid article {
+  border-top-color: #bccfbd;
+}
+.cta-section {
+  background: radial-gradient(ellipse at 90% 100%, #cadfc5, transparent 70%), #e5eddf;
+  border-top: 1px solid #cfdecb;
+}
+.team-card {
+  padding: 10px;
+  border: 1px solid #d8e2d7;
+  border-radius: 18px;
+  background: #ffffffb8;
+  box-shadow: 0 12px 35px #17352b06;
+}
+.team-portrait {
+  height: auto;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 11px;
+}
+.team-portrait img {
+  object-position: center;
+}
+.team-card[data-reveal='visible'] .team-portrait {
+  animation: none;
+}
+.team-details {
+  padding: 24px 14px 18px;
+}
+.portrait-profile {
+  top: auto;
+  bottom: 14px;
+  right: 14px;
+  border-radius: 7px;
+  background: #102b32ed;
+}
+.team-name > a {
+  border-radius: 7px;
+}
+.institution {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.institution p {
+  max-width: none;
+}
+.contact-form {
+  border-radius: 18px;
+  border-color: #d5e0d1;
+  box-shadow: 0 20px 60px #183d2b09;
+}
+.form-field input,
+.form-field select,
+.form-field textarea,
+.form-result {
+  border-radius: 8px;
+}
+.contact-aside {
+  padding: 24px;
+  background: #e7eee2;
+  border-radius: 12px;
+}
+[data-reveal] {
+  transition:
+    opacity 0.65s var(--ease-out) var(--reveal-delay, 0ms),
+    transform 0.65s var(--ease-out) var(--reveal-delay, 0ms),
+    background-color 0.35s,
+    border-color 0.35s,
+    box-shadow 0.35s;
+}
+[data-reveal='pending'] {
+  transform: translateY(5px);
+}
+/* A single reveal is enough: no repeated scanning when the pointer crosses a map. */
+.region-map:hover .region-scan {
+  animation: none;
+}
+@media (min-width: 801px) and (hover: hover) and (pointer: fine) {
+  .button:hover:not(:disabled),
+  .nav-cta:hover {
+    translate: 0 -1px;
+  }
+  .team-card:hover,
+  .audience-grid > a:hover,
+  .use-case-panel:hover,
+  .layer:hover {
+    translate: none;
+  }
+  .team-card:hover {
+    box-shadow: 0 14px 38px #17352b0e;
+    border-color: #b9cbb4;
+  }
+  .team-card:hover .team-portrait img {
+    scale: 1.012;
+    translate: none;
+  }
+  .audience-grid > a:hover {
+    background: #edf3e8;
+    box-shadow: 0 12px 30px #18352b0a;
+  }
+}
+@media (max-width: 800px) {
+  .page-intro::before {
+    opacity: 0.45;
+    width: 65vw;
+  }
+  .team-details {
+    padding: 22px 10px 16px;
+  }
+  .contact-form {
+    padding: 24px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal='pending'] {
+    transform: none;
+  }
+}

@@ -1,0 +1,385 @@
+.home-page {
+  overflow: clip;
+}
+.art-caption {
+  font-size: 0.72rem;
+  color: #637579;
+  margin: -16px 0 28px;
+}
+.home-page .hero {
+  min-height: 780px;
+}
+.home-page .hero-content {
+  z-index: 2;
+}
+.home-page .hero h1 {
+  font-size: clamp(4rem, 6.3vw, 6.5rem);
+  max-width: 720px;
+}
+.hero-observation {
+  position: absolute;
+  right: max(4%, calc((100vw - 1280px) / 2));
+  top: 23%;
+  width: 37%;
+  max-width: 490px;
+  border: 1px solid #d4e4dd38;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #163c4277, #071b2599);
+  backdrop-filter: blur(8px);
+  color: #cde8d6;
+  box-shadow: 0 24px 65px #00101830;
+}
+.hero-observation {
+  isolation: isolate;
+  z-index: 3;
+  transition:
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+.hero-observation::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    220px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    #c0efb318,
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.hero-observation .art-orbit {
+  transform: perspective(800px) rotateX(var(--orbit-y, 0deg)) rotateY(var(--orbit-x, 0deg));
+  transition:
+    transform 0.65s cubic-bezier(0.2, 0.65, 0.3, 1),
+    color 0.5s ease;
+}
+.hero-observation .orbit-satellite {
+  transform-origin: 300px 175px;
+  transition:
+    transform 1.1s cubic-bezier(0.2, 0.65, 0.3, 1),
+    filter 0.5s ease;
+}
+@media (min-width: 801px) and (hover: hover) and (pointer: fine) {
+  .hero-observation:hover {
+    border-color: #c0efb377;
+    box-shadow:
+      0 24px 65px #00101840,
+      0 0 30px #b0d9b008;
+  }
+  .hero-observation:hover::before {
+    opacity: 1;
+  }
+  .hero-observation:hover .art-orbit {
+    color: #d4efd5;
+  }
+  .hero-observation:hover .orbit-satellite {
+    transform: rotate(12deg);
+    filter: drop-shadow(0 0 5px #c0efb388);
+  }
+  .hero-observation:hover .orbit-target {
+    animation: orbital-ping 1.3s ease-out;
+  }
+}
+@keyframes orbital-ping {
+  from {
+    r: 18;
+    opacity: 0.6;
+  }
+  to {
+    r: 42;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-observation .art-orbit,
+  .hero-observation:hover .orbit-satellite {
+    transform: none;
+  }
+  .hero-observation:hover .orbit-target {
+    animation: none;
+  }
+  .hero-observation::before {
+    display: none;
+  }
+}
+.observation-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid #cde8d620;
+  gap: 16px;
+}
+.signal-art {
+  width: 100%;
+  display: block;
+  color: #a7d4b8;
+}
+.observation-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 0 24px 24px;
+  font-size: 0.9rem;
+}
+.observation-foot strong {
+  font-weight: 500;
+  color: #fff;
+}
+.observation-foot .micro {
+  font-size: 0.58rem;
+  text-align: right;
+  color: #b1c4c1;
+}
+.home-page .signal-strip {
+  padding: 25px 0;
+  background: #102a30;
+}
+.home-page .stage-label {
+  border: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: #bdcfba;
+}
+.home-page .section {
+  padding: 110px 0;
+}
+.home-page .section-heading h2 {
+  text-wrap: balance;
+}
+.earth-story {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  background: #102d32;
+  color: #e8efe5;
+  border-radius: 24px;
+  padding: 35px 45px;
+  margin-bottom: 45px;
+  overflow: hidden;
+  position: relative;
+}
+.earth-story::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 80% 70%, #58846635, transparent 70%);
+}
+.earth-story > div {
+  position: relative;
+}
+.earth-story .micro {
+  color: #acd0a7;
+}
+.earth-story h3 {
+  font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  margin: 22px 0;
+}
+.earth-story p {
+  color: #a5bbb7;
+  max-width: 330px;
+  font-size: 0.9rem;
+}
+.home-page .problem-grid {
+  gap: 16px;
+}
+.home-page .problem-item {
+  padding: 28px;
+  border: 1px solid #d6e0d2;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #fff, #ecf1e9);
+}
+.home-page .problem-symbol {
+  margin-bottom: 28px;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  background: #e3ebdf;
+  border-radius: 50%;
+  font-size: 2rem;
+}
+.home-page .problem-item h3 {
+  font-size: 1.2rem;
+}
+.home-page .problem-item p {
+  font-size: 0.88rem;
+}
+.home-page .comparison {
+  padding: 28px 32px;
+  background: #e7eddf;
+  border: 0;
+  border-radius: 14px;
+  margin-top: 24px;
+}
+.home-page .dark {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 35%, #20474a, #081c23 75%);
+}
+.home-page .dashboard {
+  transform: perspective(1800px) rotateX(2deg);
+  border-color: #86a89555;
+  box-shadow: 0 30px 100px #0005;
+}
+.home-page .steps-grid {
+  gap: 20px;
+}
+.home-page .step-number {
+  color: #c3e7b5;
+  font-size: 1.5rem;
+  border-top-color: #a8d2ae40;
+}
+.home-page .why-grid {
+  gap: 24px;
+}
+.home-page .why-grid article {
+  padding: 0 28px 32px;
+  border: 1px solid #d6dfd5;
+  border-radius: 18px;
+  background: #fff9;
+  overflow: hidden;
+}
+.home-page .why-grid .signal-art {
+  height: 200px;
+  margin-bottom: 25px;
+  color: #49715b;
+  border-bottom: 1px solid #dce5d7;
+}
+.home-page .why-grid h3 {
+  max-width: none;
+  font-size: 1.6rem;
+}
+.home-page .why-grid p {
+  font-size: 0.9rem;
+}
+.home-page .focus-grid > .region-map {
+  padding: 24px;
+  border: 1px solid #9dbca433;
+  border-radius: 50% 50% 20px 20px;
+  background: radial-gradient(ellipse, #28504a66, transparent);
+}
+.home-page .audience-grid > a {
+  position: relative;
+  padding-top: 45px;
+  overflow: hidden;
+  border-top: 3px solid #71936b;
+}
+.home-page .audience-grid > a::before {
+  content: '';
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border: 1px solid #85a47c26;
+  border-radius: 50%;
+  top: -90px;
+  right: -40px;
+  box-shadow:
+    0 0 0 25px #85a47c09,
+    0 0 0 50px #85a47c07;
+  pointer-events: none;
+}
+.home-page .cta-section {
+  position: relative;
+  overflow: hidden;
+}
+.home-page .cta-section::before {
+  content: '';
+  position: absolute;
+  right: -120px;
+  top: -160px;
+  width: 550px;
+  height: 550px;
+  border: 1px solid #668b6630;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 50px #668b6608,
+    0 0 0 100px #668b6606;
+  pointer-events: none;
+}
+.home-page .cta-inner {
+  position: relative;
+}
+@media (max-width: 1100px) {
+  .hero-observation {
+    width: 34%;
+    top: 30%;
+  }
+  .observation-label span:last-child,
+  .observation-foot .micro {
+    display: none;
+  }
+  .earth-story {
+    padding: 30px;
+  }
+  .home-page .problem-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  .home-page .hero {
+    min-height: 760px;
+    height: auto;
+    padding-top: 35px;
+  }
+  .home-page .hero h1 {
+    font-size: clamp(3.5rem, 11vw, 5rem);
+  }
+  .hero-observation {
+    display: none;
+  }
+  .home-page .hero-content {
+    padding-bottom: 100px;
+  }
+  .home-page .section {
+    padding: 70px 0;
+  }
+  .earth-story {
+    grid-template-columns: 1fr;
+    padding: 30px 24px 10px;
+  }
+  .earth-story .signal-art {
+    max-height: 260px;
+  }
+  .home-page .problem-item {
+    padding: 20px;
+  }
+  .home-page .comparison {
+    grid-template-columns: 1fr;
+    padding: 25px;
+    gap: 25px;
+  }
+  .home-page .why-grid .signal-art {
+    height: 180px;
+  }
+  .home-page .signal-strip .stage-label {
+    display: none;
+  }
+  .home-page .dashboard {
+    transform: none;
+  }
+}
+@media (max-width: 460px) {
+  .home-page .problem-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-page .problem-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    column-gap: 18px;
+  }
+  .home-page .problem-symbol {
+    grid-row: 1 / 4;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+  }
+  .home-page .problem-item h3 {
+    margin: 8px 0;
+  }
+}
